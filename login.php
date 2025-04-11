@@ -33,13 +33,20 @@
 					<div class="checkbox">
 						<label class="control-label" for="rememberMe">
 							<input type="checkbox" name="rememberMe" id="rememberMe" value="1">
-							<?php echo $Translation['remember me']; ?>
+							 <?php echo $Translation['remember me']; ?>
 						</label>
 					</div>
 
 					<div class="row">
 						<div class="col-sm-offset-3 col-sm-6">
 							<button name="signIn" type="submit" id="submit" value="signIn" class="btn btn-primary btn-lg btn-block"><?php echo $Translation['sign in']; ?></button>
+						</div>
+					</div>
+					<div class="form-group ">
+						<div class="col-sm-offset-3 col-sm-6">
+						<div class="text-center">
+                        register a account? <a href="signup.php">signup here</a>
+                    </div>
 						</div>
 					</div>
 				</form>
