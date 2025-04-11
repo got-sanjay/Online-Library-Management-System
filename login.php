@@ -1,9 +1,24 @@
 <?php if(!isset($Translation)){ @header('Location: index.php?signIn=1'); exit; } ?>
 <?php include_once("$currDir/header-start.php"); ?>
-<?php if($_GET['loginFailed']){ ?>
-	<div class="alert alert-danger"><?php echo $Translation['login failed']; ?></div>
-<?php } ?>
+<?php
+$prefill_username = isset($_GET['username']) ? htmlspecialchars($_GET['username']) : '';
+?>
+<style>
+	.animated-alert {
+	opacity: 0;
+	transform: translateY(-20px);
+	transition: all 0.6s ease;
+	position: relative;
+	z-index: 1000;
+	margin-top: 20px;
+}
 
+.animated-alert.show {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+</style>
 <div class="row">
 	<div class="col-sm-6 col-lg-8" id="login_splash">
 		<!-- customized splash content here -->
@@ -18,12 +33,24 @@
 				<?php } ?>
 				<div class="clearfix"></div>
 			</div>
+			<?php if (isset($_GET['registered'])): ?>
+				<div id="register-success" class="alert alert-success animated-alert">
+					✅ Registration successful. Please log in.
+				</div>
+			<?php endif; ?>
+
+			<?php if (isset($_GET['loginFailed'])): ?>
+				<div id="login-failed" class="alert alert-danger animated-alert">
+					❌ Login failed. Please check your credentials.
+				</div>
+			<?php endif; ?>
 
 			<div class="panel-body">
 				<form method="post" action="index.php">
 					<div class="form-group">
 						<label class="control-label" for="username"><?php echo $Translation['username']; ?></label>
-						<input class="form-control" name="username" id="username" type="text" placeholder="<?php echo $Translation['username']; ?>" required>
+						<input type="text" name="username" class="form-control" required
+					   value="<?php echo $prefill_username; ?>" placeholder="Enter your username">
 					</div>
 					<div class="form-group">
 						<label class="control-label" for="password"><?php echo $Translation['password']; ?></label>
@@ -63,3 +90,19 @@
 </div>
 
 <script>document.getElementById('username').focus();</script>
+<!-- jQuery CDN -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+$(document).ready(function () {
+		// Show the alerts with animation
+		setTimeout(() => {
+			$('.animated-alert').addClass('show');
+		}, 200); // Slight delay to trigger animation
+
+		// Hide after 4 seconds with fade and slide effect
+		setTimeout(() => {
+			$('.animated-alert').removeClass('show').fadeOut(600);
+		}, 4000);
+	});
+</script>
