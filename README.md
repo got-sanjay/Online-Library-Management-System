@@ -59,7 +59,7 @@ A simple yet powerful web-based Library Management System developed using **PHP*
 
 | Dashboard View | Manage Books | Issue/Return |
 |----------------|--------------|--------------|
-| ![Dashboard](dist/img/projectPortrate.png) |
+| ![Dashboard](dist/img/projectPortrate.png) | ![Books](dist/img/books.png) | ![Issued](dist/img/issued.png) |
 
 ## 📌 To-Do / Future Enhancements
 
