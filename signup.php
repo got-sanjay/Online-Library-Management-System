@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $phoneNumber = $_POST['country_code'] . $_POST['custom2'];
     $memberID = $conn->real_escape_string($_POST['username']);
     $email = $conn->real_escape_string($_POST['email']);
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // More secure
+    $password = md5($_POST['password']); // More secure
     $signupDate = date('Y-m-d');
     $groupID = 3;
     $isBanned = 0;
